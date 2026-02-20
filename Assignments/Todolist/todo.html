@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+        <form action="" class ="todo-form">
+        <input type="text" id="title" value="" required>
+        <input type="text" id="description" value="" required>
+        <input type="date"  id="due-date" value="" required>
+        <button id="submit-btn" type="submit">submit</button>
+        </form>
+         
+     
+ 
+
+    <script>
+        let title = document.querySelector('#title');
+        let description = document.querySelector('#description');
+        let date = document.querySelector('#due-date');
+        let submit = document.querySelector('#submit-btn');
+
+        submit.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log(title.value, description.value, date.value);
+        })
+    </script>
+</body>
+</html>

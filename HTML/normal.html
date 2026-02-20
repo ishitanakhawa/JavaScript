@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button onclick="makecake()">make a Cake</button>
+   <button onclick="OrderCake()">Order a Cake</button>  
+   <button onclick="OrderBurger()">Order a Burger</button> 
+
+   <script>
+    function makecake(){
+        setTimeout(()=> {
+ console.log("adding item");
+        },2000);
+       
+        console.log("baking cake");
+        console.log("cake is ready");
+    }
+
+    function cakes(){
+        return new Promise((resolve,error ) =>{
+           setTimeout(() =>{
+            resolve("Cake Ready");
+           },2000);
+        })
+    }
+
+    function OrderCake(){
+        console.log("Order a Cake");
+
+        cakes().then((msg) => console.log(msg));
+    } 
+    // call the function --cakes(). If the cake is ready --then((msg) => console.log(msg));
+
+
+        
+     async function OrderBurger(){
+        console.log('Ordering a burger');
+        let msg = await cakes();
+        console.log(msg);
+    }
+   </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .newtag{
+            display: inline-block;
+            color: blue;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="Section">
+        Hello
+        <span>World</span>
+        <p>Java Script </p>
+    </div>
+
+    <div></div>
+
+   
+
+    <script>
+        let box = document.getElementById("box");
+        let Section = document.getElementsByClassName("Section");
+         
+        //console.log(box)
+        //console.log(Section)
+
+        //let spantag = document.querySelector('#box');   
+        //console.log(spantag.outerHTML) 
+        let spantag = document.querySelector('div');   
+        //console.log(spantag.outerHTML) 
+
+        // remove chile --> span
+        let parentNode = document.querySelector('#box');
+        let childNode = document.querySelector('#box span');
+        //parentNode.removeChild(childNode);
+        //console.log(parentNode.outerHTML)
+
+        //childNode.remove(childNode)
+        //console.log(parentNode.outerHTML)
+
+        // replace 
+        //let replaced = childNode.replaceWith('p')
+        //console.log(replaced);
+
+        // create element
+       let newNode = document.createElement('p');
+        //updating
+        newNode.textContent = " Universe!"
+        
+        //newNode.style = 'display: inline-block'
+       // newNode.style = 'color : Blue'
+        //newNode.classList.add('newtag')
+        newNode.classList.toggle('newtag')
+       // newNode.classList.remove('newtag')
+        parentNode.replaceChild(newNode,childNode);
+
+        //console.log(parentNode.outerHTML)
+        
+        console.log(parentNode.innerHTML) // print the html
+        console.log(parentNode.innerText) //  apply same with css 
+        console.log(parentNode.textContent) // only text
+        
+  
+    
+    </script>
+</body>
+</html>
+
+

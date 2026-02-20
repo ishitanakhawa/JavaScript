@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .span-color{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="Section">
+        Hello
+        <span>World</span>
+       
+        <button id ="btn">Update color</button>
+    </div>
+
+    <script>
+
+        // function name (){
+
+        // }
+        // btn.addEventListener('Click', name)
+
+        
+
+        let spanTag = document.querySelector('span');
+        let btn = document.querySelector('#btn');
+        btn.addEventListener('click' , ()=> {
+            //spanTag.style = color : 'red'
+            spanTag.classList.toggle('span-color');
+       });
+   
+    </script>
+</body>
+</html>
+
+

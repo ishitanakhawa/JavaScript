@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Analyzer</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            padding-top: 50px; 
+            background: #f4f4f9; 
+        }
+        .container { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            width: 300px; 
+            text-align: center;
+         }
+        input { 
+            width: 80%; 
+            padding: 10px; 
+            margin-bottom: 10px; 
+            border: 1px solid #ddd; 
+            border-radius: 4px; 
+        }
+        button { 
+            padding: 10px 20px; 
+            cursor: pointer; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; }
+        .result {
+             margin-top: 20px; 
+             line-height: 1.6; 
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Analyzer</h1>
+        <input type="text" id="city" placeholder="Enter city name">
+        <button onclick="getWeather()">Get Weather</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+       async function getWeather() {
+            const cityName = document.getElementById('city').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!cityName) {
+                resultDiv.innerHTML = 'Please enter a city';
+                return;
+            }
+
+            resultDiv.innerHTML = 'Searching for location...';
+
+            try {
+                // 1. Fetch Location Coordinates (Geocoding)
+                const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=en&format=json`;
+                const geoResponse = await fetch(geoUrl);
+                const geoData = await geoResponse.json();
+
+                if (!geoData.results || geoData.results.length === 0) {
+                    resultDiv.innerHTML = 'City not found.';
+                    return;
+                }
+
+                const { latitude, longitude, name, country } = geoData.results[0];
+
+                // 2. Fetch Weather using Coordinates
+                resultDiv.innerHTML = `Loading weather for ${name}...`;
+                
+                const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
+                
+                // Using an options object as per your requirement
+                const options = {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                };
+
+                const weatherResponse = await fetch(weatherUrl, options);
+                const weatherData = await weatherResponse.json();
+
+                // 3. Display Result
+                const temp = weatherData.current_weather.temperature;
+                const wind = weatherData.current_weather.windspeed;
+
+                resultDiv.innerHTML = `
+                    <strong>${name}, ${country}</strong><br>
+                    Temperature: ${temp}°C<br>
+                    Wind Speed: ${wind} km/h
+                `;
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                resultDiv.innerHTML = 'An error occurred. Please try again.';
+            }
+       }
+   
+
+
+    </script>
+</body>
+</html>
