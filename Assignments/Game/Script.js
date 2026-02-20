@@ -45,7 +45,7 @@ divs.forEach((d) => {
 
       if (checkWinner(player1moves)) {
         setTimeout(() => {
-          alert("Player 1 (X) wins! 🎉");
+          alert("Player 1 (X) wins! ");
           resetGame();
         }, 100);
         return;
@@ -58,7 +58,7 @@ divs.forEach((d) => {
 
       if (checkWinner(player2moves)) {
         setTimeout(() => {
-          alert("Player 2 (O) wins! 🎉");
+          alert("Player 2 (O) wins! ");
           resetGame();
         }, 100);
         return;
@@ -68,7 +68,7 @@ divs.forEach((d) => {
 
     if (checkDraw()) {
       setTimeout(() => {
-        alert("It's a draw! 🤝");
+        alert("It's a draw! ");
         resetGame();
       }, 100);
     }
