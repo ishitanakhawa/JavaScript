@@ -19,7 +19,7 @@ class BankAccount {
   }
 }
 
-// Implementation
+
 const myAccount = new BankAccount("Rahul", 1000);
-myAccount.deposit(500);   // Balance: 1500
-myAccount.withdraw(200);  // Balance: 1300
+myAccount.deposit(500);   
+myAccount.withdraw(200);  
