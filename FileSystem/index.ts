@@ -1,6 +1,6 @@
 import { ChatOllama } from "@langchain/ollama";
 import { tool } from "@langchain/core/tools";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
+import { createAgent } from "langchain";
 import { HumanMessage } from "@langchain/core/messages";
 import { z } from "zod";
 import fs from "fs-extra"; // Corrected ESM import
@@ -52,7 +52,7 @@ const llm = new ChatOllama({
 const tools = [createFile, readFile];
 
 // We add a state modifier to help Qwen3 follow the ReAct pattern strictly
-const agent = createReactAgent({
+const agent = createAgent({
   llm,
   tools,
 });

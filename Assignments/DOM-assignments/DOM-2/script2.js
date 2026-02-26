@@ -1,5 +1,5 @@
-const storyContainer = document.querySelector(".story-container"); 
-const scaryStoryBtn = document.querySelector("#scary-btn");
+const storyContainer = document.querySelector(".story-container"); // class selector
+const scaryStoryBtn = document.querySelector("#scary-btn"); //selets by id, so we use #
 const funnyStoryBtn = document.querySelector("#funny-btn");
 const adventureStoryBtn = document.querySelector("#adventure-btn");
 const resultParagraph = document.querySelector("#result");
